@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index, name='index'),
     path('gatunek/<id>/', gatunek, name='gatunek'),
-    path('gra/<id>/',gra, name='gra')
+    path('gra/<id>/',gra, name='gra'),
+
 
 ]

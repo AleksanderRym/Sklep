@@ -5,22 +5,22 @@ from .models import Gry, Producent, Gatunek
 # Create your views here.
 
 def index(request):
-    wszystkie = Gry.objects.all()
-    jeden = Gry.objects.get(pk=2)
-    gat = Gry.objects.filter(gatunek=1)
-    gat_name = Gatunek.objects.get(id=1)
     gatunki = Gatunek.objects.all()
-    null = Gry.objects.filter(gatunek__isnull=True)
     dane = {'gatunki' : gatunki}
     return render(request, 'szablon.html', dane)
 
 def gatunek(request, id):
     gatunek_user = Gatunek.objects.get(pk=id)
-    return HttpResponse(gatunek_user)
+    gatunek_gra = Gry.objects.filter(gatunek = gatunek_user)
+    gatunki = Gatunek.objects.all()
+    dane = {'gatunek_user' : gatunek_user,
+            'gatunek_gra' : gatunek_gra,
+            'gatunki': gatunki}
+    return render(request, 'gatunek_gra.html', dane)
 
 def gra(request, id):
     gra_user = Gry.objects.get(pk=id)
-    napis = "<h1>"+ str(gra_user) +"</h1>" + \
-            "<p>" + str(gra_user.opis) + "</p>" + \
-            "<p>"+ str(gra_user.cena) +"</p>"
-    return HttpResponse(napis)
+    gatunki = Gatunek.objects.all()
+    dane = {'gra_user' : gra_user,
+            'gatunki' : gatunki}
+    return render(request, 'gra.html', dane)

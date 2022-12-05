@@ -5,15 +5,20 @@
     <title>Sklep</title>
 </head>
 <body>
-    <h1> WITAJ W NASZYM SKLEPIE </h1>
-
-     <h3> Oto lista gatunków gier </h3>
-
+    <div>
+        <h1> LOGO SKLEPU            wyszukiwarka     wyloguj </h1>
+    </div>
+    <div style="clear:both"></div>
+    <div style="widht:200px; float:left">
+        <h3> MENU </h3>
         {% for gat in gatunki %}
-
-        <p><a href = "gatunek/{{ gat.id }}"> {{ gat.nazwa }}</a> </p>
-
-
+            <p><a href = "/gatunek/{{ gat.id }}"> {{ gat.nazwa }}</a> </p>
         {% endfor %}
+    </div>
+
+    <div style="width:700px; float:left">
+        {% block gra %} {% endblock gra %}
+    </div>
+    <div style="clear:both"></div>
 </body>
 </html>
