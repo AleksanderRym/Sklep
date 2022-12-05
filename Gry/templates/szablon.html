@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Sklep</title>
+</head>
+<body>
+    <h1> WITAJ W NASZYM SKLEPIE </h1>
+
+     <h3> Oto lista gatunków gier </h3>
+
+        {% for gat in gatunki %}
+
+        <p><a href = "gatunek/{{ gat.id }}"> {{ gat.nazwa }}</a> </p>
+
+
+        {% endfor %}
+</body>
+</html>
