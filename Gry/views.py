@@ -38,4 +38,8 @@ def gra_nazwa(request):
             print(dane)
             return render(request, 'gra.html', dane)
         else:
-            return render(request, 'gra.html', {'error': 'Nie znaleziono gry'})
+            gatunki = Gatunek.objects.all()
+            error = 'Nie znaleziono gry'
+            dane = {'gatunki': gatunki,
+                    'error': error}
+            return render(request, 'gra.html', dane)

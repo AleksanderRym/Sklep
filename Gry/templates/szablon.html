@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="pl">
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
 <head>
     <meta charset="UTF-8">
     <title>Sklep</title>
 </head>
 <body>
-{% load static %}
 <div class="header">
-    <img src="{% static 'images/logo.png' %}" alt="logo">
-    <form action="{% url 'search'%}" method="get">
+    <div class="h_component"> <img src="{% static 'images/logo.png' %}" alt="logo"> </div>
+    <div class="h_component">
+        <form action="{% url 'search'%}" method="get">
         <input type="text" name="q" placeholder="Szukaj gry...">
         <button type="submit">Szukaj</button>
-    </form>
-    <a href="/admin">Wyloguj się</a>
+        </form>
+    </div>
+    <div class="h_component"> <a href="/admin">Wyloguj się</a> </div>
 </div>
     <div style="clear:both"></div>
     <div style="widht:200px; float:left">
