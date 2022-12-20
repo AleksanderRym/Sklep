@@ -5,9 +5,15 @@
     <title>Sklep</title>
 </head>
 <body>
-    <div>
-        <h1> LOGO SKLEPU            wyszukiwarka     wyloguj </h1>
-    </div>
+{% load static %}
+<div class="header">
+    <img src="{% static 'images/logo.png' %}" alt="logo">
+    <form action="{% url 'search'%}" method="get">
+        <input type="text" name="q" placeholder="Szukaj gry...">
+        <button type="submit">Szukaj</button>
+    </form>
+    <a href="/admin">Wyloguj się</a>
+</div>
     <div style="clear:both"></div>
     <div style="widht:200px; float:left">
         <h3> MENU </h3>

@@ -24,3 +24,18 @@ def gra(request, id):
     dane = {'gra_user' : gra_user,
             'gatunki' : gatunki}
     return render(request, 'gra.html', dane)
+
+def gra_nazwa(request):
+    if request.method == 'GET':
+        query = request.GET.get('q')
+        gra_nazwa = Gry.objects.filter(nazwa=query).first()
+        if gra_nazwa:
+            id = gra_nazwa.id
+            gra_user = Gry.objects.get(pk=id)
+            gatunki = Gatunek.objects.all()
+            dane = {'gra_user': gra_user,
+                    'gatunki': gatunki}
+            print(dane)
+            return render(request, 'gra.html', dane)
+        else:
+            return render(request, 'gra.html', {'error': 'Nie znaleziono gry'})

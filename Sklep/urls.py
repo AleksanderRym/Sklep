@@ -22,6 +22,6 @@ urlpatterns = [
     path('',index, name='index'),
     path('gatunek/<id>/', gatunek, name='gatunek'),
     path('gra/<id>/',gra, name='gra'),
-
+    path('search', gra_nazwa, name='search')
 
 ]
