@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl">
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Zarejestruj się</title>
+</head>
+<body>
+<div class="form_container">
+  <h3> STWÓRZ KONTO </h3>
+
+  <form method="post" action="">
+    {% csrf_token %}
+    <p>
+      {{form.username.label}}
+      {{form.username}}
+    </p>
+    <p>
+      {{form.password1.label}}
+      {{form.password1}}
+    </p>
+    <p>
+      {{form.password2.label}}
+      {{form.password2}}
+    </p>
+    <input type="submit" value="Zarejestruj się">
+  </form>
+  <p>
+    Masz już konto? <a href="/login">Zaloguj się</a>.
+  </p>
+</div>
+</body>
+</html>
