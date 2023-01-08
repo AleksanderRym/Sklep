@@ -8,17 +8,20 @@
 </head>
 <body>
 <div class="header">
-    <div class="h_component"> <img src="{% static 'images/logo.png' %}" alt="logo"> </div>
+    <div class="h_component"> <img src="{% static 'image0.png' %}" width="200" height=100"> </div>
     <div class="h_component">
         <form action="{% url 'search'%}" method="get">
         <input type="text" name="q" placeholder="Szukaj gry...">
         <button type="submit">Szukaj</button>
         </form>
     </div>
-    <div class="h_component"> <a href="/admin">Wyloguj się</a> </div>
+    <span id="hello-msg">
+        Witaj, {{request.user}}
+        <a href="{% url 'logout' %}">Wyloguj się</a>
+    </span>
 </div>
     <div style="clear:both"></div>
-    <div style="widht:200px; float:left">
+    <div class="gatunki">
         <h3> MENU </h3>
         {% for gat in gatunki %}
             <p><a href = "/gatunek/{{ gat.id }}"> {{ gat.nazwa }}</a> </p>

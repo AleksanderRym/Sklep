@@ -1,11 +1,55 @@
 body {
   background-color: lightblue;
+  color: black;
   font-family: verdana;
 }
 
 .h_component {
-    float: left;
-    padding-right: 100px;
+  float: left;
+  padding-right: 200px;
 }
 
+.form_container {
+  background: gray;
+  border: 5px solid;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(0, -50%);
+  padding: 10px;
+}
 
+.gra {
+  background: gray;
+  border: 5px solid;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  width: 600px;
+  transform: translate(0, -50%);
+  padding: 10px;
+}
+
+.gatunki {
+  background: gray;
+  border: 5px solid;
+  position: absolute;
+  float: left;
+  top: 30%;
+  width: 200px;
+  transform: translate(0, -50%);
+  padding: 10px;
+}
+
+#messages{
+    background-color: grey;
+    color: #fff;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#hello-msg{
+    float: right;
+    font-size: 18px;
+    padding-right: 20px;
+}

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Producent(models.Model):
     nazwa = models.CharField(max_length=100)
@@ -12,6 +13,7 @@ class Producent(models.Model):
         verbose_name_plural = "Producenci"
         #
 
+
 class Gatunek(models.Model):
     nazwa = models.CharField(max_length=100)
 
@@ -23,12 +25,14 @@ class Gatunek(models.Model):
         verbose_name_plural = "Gatunki"
         #
 
+
 class Gry(models.Model):
     nazwa = models.CharField(max_length=100)
     opis = models.TextField(blank=True)
     cena = models.DecimalField(max_digits=12, decimal_places=2)
-    producent = models.ForeignKey(Producent,on_delete=models.CASCADE, null=True)
+    producent = models.ForeignKey(Producent, on_delete=models.CASCADE, null=True)
     gatunek = models.ForeignKey(Gatunek, on_delete=models.CASCADE, null=True)
+    zdjecie = models.ImageField(upload_to='', default='static/image0.jpg')
 
     def __str__(self):
         return self.nazwa
@@ -37,4 +41,3 @@ class Gry(models.Model):
         verbose_name = "Gra"
         verbose_name_plural = "Gry"
         #
-
