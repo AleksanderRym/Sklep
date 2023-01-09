@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -32,7 +33,7 @@ class Gry(models.Model):
     cena = models.DecimalField(max_digits=12, decimal_places=2)
     producent = models.ForeignKey(Producent, on_delete=models.CASCADE, null=True)
     gatunek = models.ForeignKey(Gatunek, on_delete=models.CASCADE, null=True)
-    zdjecie = models.ImageField(upload_to='', default='static/image0.jpg')
+    zdjecie = models.ImageField(upload_to='', default='temp.jfif')
 
     def __str__(self):
         return self.nazwa
@@ -40,4 +41,30 @@ class Gry(models.Model):
     class Meta:
         verbose_name = "Gra"
         verbose_name_plural = "Gry"
+        #
+
+
+class UserGame(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    game = models.ForeignKey(Gry, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.game.nazwa
+
+    class Meta:
+        verbose_name = "Gra użytkownika"
+        verbose_name_plural = "Gry użytkownika"
+        #
+
+
+class UserWishGame(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    game = models.ForeignKey(Gry, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.game.nazwa
+
+    class Meta:
+        verbose_name = "Wymażona gra użytkownika"
+        verbose_name_plural = "Wymażone gry użytkownika"
         #

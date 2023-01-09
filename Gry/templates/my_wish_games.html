@@ -3,11 +3,11 @@
     {% block gra %}
 
     <div class="game-info">
-      {% if gatunek_gra %}
+      {% if games %}
 
-        {% for gra in gatunek_gra %}
+        {% for game in games %}
 
-        <p><a href="/gra/{{ gra.id }}"> {{ gra.nazwa }}</a></p>
+        <p><a href="/gra/{{ game.id }}"> {{ game }}</a></p>
 
         {% endfor %}
 

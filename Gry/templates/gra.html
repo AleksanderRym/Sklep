@@ -1,21 +1,48 @@
-    {% extends 'szablon.html' %}
+{% extends 'szablon.html' %}
 
-    {% load static %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
 
-    {% block gra %}
-    <div class="gra">
+{% block gra %}
+
+<div class="game-frame">
+
     {% if gra_user %}
 
-    <h1> {{ gra_user.nazwa }} </h1>
-    <img src="{% static gra_user.zdjecie.url %}" width="200" height="200">
-    <p> Wydawca: {{ gra_user.producent }} </p>
-    <p> Opis: {{ gra_user.opis }} </p>
-    <p> Cena: {{ gra_user.cena }} zł</p>
+    <div class="game-info">
+        <h2> {{ gra_user.nazwa }} </h2>
+        <img src="{% static gra_user.zdjecie.url %}">
+        <p> Wydawca: {{ gra_user.producent }} </p>
+        <p> Opis: {{ gra_user.opis }} </p>
+        <p> Cena: {{ gra_user.cena }} zł</p>
+    <div class="game-actions">
+        <form action="{% url 'buyGame' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" name="id" value="{{ gra_user.id }}">Kup</button>
+        </form>
+        <form action="{% url 'addWishGame' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" name="id" value="{{ gra_user.id }}">Dodaj do listy życzeń</button>
+        </form>
+    </div>
+        {% for message in messages %}
+        <p id="messages"> {{ message }} </p>
+        {% endfor %}
+    </div>
+
+    {% else %}
+
+    {% if error_message %}
+
+    <p> {{ error_message }}</p>
 
     {% else %}
 
     <p>Nie ma gry o takim id.</p>
 
     {% endif %}
-    </div>
-    {% endblock gra %}
+
+    {% endif %}
+</div>
+
+{% endblock gra%}
